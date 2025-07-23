@@ -79,7 +79,7 @@ pipeline {
 
         stage('Build & Test Application') {
             steps {
-                sh "gradle clean build -Dspring.profiles.active=stg"
+                sh "gradle clean build"
             }
         }
 
