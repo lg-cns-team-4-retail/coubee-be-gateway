@@ -3,3 +3,7 @@ spring:
     import:
       - file:/etc/config/application-stg.yml
       - file:/etc/secret/application-secret.yml
+
+eureka:
+  client:
+    enabled: false
