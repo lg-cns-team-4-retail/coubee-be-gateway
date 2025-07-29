@@ -33,6 +33,12 @@ spring:
               - Path=/api/store/** # '/api/post/'로 시작하는 모든 경로의 요청이 이 라우트의 대상이 됩니다.
             filters:
               - addAuthenticationHeader
+          - id: coubee-be-product # 두 번째 라우트의 고유 식별자입니다.
+            uri: lb://coubee-be-product # 이 라우트가 요청을 전달할 대상 URI입니다.
+            predicates: # 이 라우트가 적용될 조건을 정의합니다.
+              - Path=/api/product/** # '/api/post/'로 시작하는 모든 경로의 요청이 이 라우트의 대상이 됩니다.
+            filters:
+              - addAuthenticationHeader
     config:
       enabled: false
 #  zipkin:
