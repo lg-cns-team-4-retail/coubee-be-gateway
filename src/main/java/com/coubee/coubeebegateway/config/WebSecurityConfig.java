@@ -49,6 +49,7 @@ public class WebSecurityConfig {
                 )
                 .authorizeHttpRequests(registry -> registry
                         .requestMatchers("/api/user/auth/**").permitAll()
+                        .requestMatchers("/api/user/images/**").permitAll()
                         .requestMatchers("/api/store/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/store/images/**").permitAll()
                         .requestMatchers("/api/store/su/**").hasRole("SUPER_ADMIN")
@@ -56,7 +57,6 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/product/su/**").hasRole("SUPER_ADMIN")
                         .anyRequest().authenticated()
                 );
-
         return http.build();
     }
 
