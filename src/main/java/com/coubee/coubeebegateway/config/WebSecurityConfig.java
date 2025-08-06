@@ -49,6 +49,7 @@ public class WebSecurityConfig {
                 )
                 .authorizeHttpRequests(registry -> registry
                         .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers("/api/order/webhook/portone").permitAll()
                         .requestMatchers("/api/user/auth/**").permitAll()
                         .requestMatchers("/api/user/images/**").permitAll()
                         .requestMatchers("/api/store/admin/**").hasRole("ADMIN")
