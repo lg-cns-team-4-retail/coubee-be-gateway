@@ -77,8 +77,9 @@ public class WebSecurityConfig {
                 "Authorization",
                 "Content-Type",
                 "X-Auth-Token",
-                "PortOne-Signature-v2",      // PortOne 서명 헤더 허용
-                "PortOne-Request-Timestamp"  // PortOne 타임스탬프 헤더 허용
+                "webhook-signature", // PortOne 서명 헤더 허용
+                "webhook-timestamp", // PortOne 타임스탬프 헤더 허용
+                "webhook-id" // PortOne 고유 ID 헤더 허용
         ));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
