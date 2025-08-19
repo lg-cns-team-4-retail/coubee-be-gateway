@@ -57,7 +57,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/store/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/store/images/**").permitAll()
                         .requestMatchers("/api/store/near").permitAll()
-                        .requestMatchers("/api/store/detail/**").permitAll()
+//                        .requestMatchers("/api/store/detail/**").permitAll()
                         .requestMatchers("/api/product/search/es").permitAll()
                         .requestMatchers("/api/product/detail/**").permitAll()
                         .requestMatchers("/api/store/su/**").hasRole("SUPER_ADMIN")
