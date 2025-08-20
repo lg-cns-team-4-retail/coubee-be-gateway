@@ -54,6 +54,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/user/notification/token/delete").permitAll()
                         .requestMatchers("/api/user/auth/**").permitAll()
                         .requestMatchers("/api/user/images/**").permitAll()
+                        .requestMatchers("/api/user/su/**").hasRole("SUPER_ADMIN")
                         .requestMatchers("/api/store/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/store/images/**").permitAll()
                         .requestMatchers("/api/store/near").permitAll()
