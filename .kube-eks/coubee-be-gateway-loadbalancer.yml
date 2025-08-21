@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: coubee-be-loadbalancer
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-internal: "false"  # 여기 추가/수정
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 spec:
   type: LoadBalancer
   selector:
