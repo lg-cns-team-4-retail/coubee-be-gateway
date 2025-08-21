@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: coubee-be-gateway-nodeport
+  name: coubee-be-loadbalancer
+  namespace: default
 spec:
-  type: NodePort # default는 ClusterIp
+  type: LoadBalancer
   selector:
     app: coubee-be-gateway
   ports:
     - protocol: TCP
-      port: 8080
+      port: 80
       targetPort: 8080
-      nodePort: 30080
