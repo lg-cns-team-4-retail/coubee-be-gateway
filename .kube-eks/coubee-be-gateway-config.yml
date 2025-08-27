@@ -37,3 +37,9 @@ data:
                     - Path=/api/order/**
                   filters:
                     - addAuthenticationHeader
+                - id: coubee-be-notification
+                  uri: http://coubee-be-notification-service:8080
+                  predicates:
+                    - Path=/api/notification/**
+                  filters:
+                    - addAuthenticationHeader
