@@ -65,7 +65,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/store/su/**").hasRole("SUPER_ADMIN")
                         .requestMatchers("/api/product/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/product/su/**").hasRole("SUPER_ADMIN")
-                        .requestMatchers("/api/reports/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/order/reports/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 );
         return http.build();
