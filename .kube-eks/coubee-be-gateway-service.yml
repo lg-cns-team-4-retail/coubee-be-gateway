@@ -12,7 +12,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:ap-northeast-2:310095858382:certificate/5247b9cd-f3fb-47b7-9464-dc9a00014ef5
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
 
-    external-dns.alpha.kubernetes.io/hostname: coubee.store
+    external-dns.alpha.kubernetes.io/hostname: api.coubee.store
 
 spec:
   type: LoadBalancer
