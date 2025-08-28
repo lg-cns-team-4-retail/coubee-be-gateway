@@ -9,7 +9,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 
     # 🔒 NLB TLS 리스너(443) + ACM 인증서 연결
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:ap-northeast-2:310095858382:certificate/5247b9cd-f3fb-47b7-9464-dc9a00014ef5
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:ap-northeast-2:310095858382:certificate/e42e1acf-0539-4336-95c5-028098ab62be
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
 
     external-dns.alpha.kubernetes.io/hostname: api.coubee.store
