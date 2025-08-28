@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: coubee-gateway
+  namespace: default
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:310095858382:certificate/5247b9cd-f3fb-47b7-9464-dc9a00014ef5
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    # ↓ 필요하면 200 나오는 경로로 교체 (예: /actuator/health)
+    # alb.ingress.kubernetes.io/healthcheck-path: /
+spec:
+  ingressClassName: alb
+  rules:
+    - host: coubee.store
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: coubee-be-gateway
+                port:
+                  number: 8080
