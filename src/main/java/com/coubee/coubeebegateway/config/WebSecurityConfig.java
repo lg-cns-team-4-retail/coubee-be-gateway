@@ -29,12 +29,6 @@ public class WebSecurityConfig {
     private final CustomAuthenticationEntryPoint authenticationEntryPoint;
     private final CustomAccessDeniedHandler accessDeniedHandler;
 
-    @PostConstruct
-    public void init() {
-        // 비동기(SSE) 요청에서도 SecurityContext가 전파되도록 설정
-        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
-    }
-
     @Bean
     public SecurityFilterChain applicationSecurity(HttpSecurity http) throws Exception {
         http
@@ -75,7 +69,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/product/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/product/su/**").hasRole("SUPER_ADMIN")
                         .requestMatchers("/api/order/reports/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/notification/subscribe").hasRole("ADMIN")
+                        .requestMatchers("/api/notification/subscribe").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();
