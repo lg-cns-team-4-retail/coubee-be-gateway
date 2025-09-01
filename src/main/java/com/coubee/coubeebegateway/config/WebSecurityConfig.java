@@ -4,6 +4,7 @@ import com.coubee.coubeebegateway.security.filter.JwtAuthenticationFilter;
 import com.coubee.coubeebegateway.security.handler.CustomAccessDeniedHandler;
 import com.coubee.coubeebegateway.security.handler.CustomAuthenticationEntryPoint;
 import com.coubee.coubeebegateway.security.jwt.JwtTokenValidator;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -26,6 +28,12 @@ public class WebSecurityConfig {
     private final JwtTokenValidator jwtTokenValidator;
     private final CustomAuthenticationEntryPoint authenticationEntryPoint;
     private final CustomAccessDeniedHandler accessDeniedHandler;
+
+    @PostConstruct
+    public void init() {
+        // 비동기(SSE) 요청에서도 SecurityContext가 전파되도록 설정
+        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
+    }
 
     @Bean
     public SecurityFilterChain applicationSecurity(HttpSecurity http) throws Exception {
