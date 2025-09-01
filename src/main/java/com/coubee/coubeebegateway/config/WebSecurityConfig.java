@@ -57,7 +57,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/user/su/**").hasRole("SUPER_ADMIN")
                         .requestMatchers("/api/store/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/store/images/**").permitAll()
-                        .requestMatchers("/api/store/near").permitAll()
+                        .requestMatchers("/api/store/near/**").permitAll()
                         .requestMatchers("/api/store/detail/**").permitAll()
                         .requestMatchers("/api/product/search/es").permitAll()
                         .requestMatchers("/api/product/detail/**").permitAll()
@@ -89,7 +89,9 @@ public class WebSecurityConfig {
                 "X-Auth-Token",
                 "webhook-signature", // PortOne 서명 헤더 허용
                 "webhook-timestamp", // PortOne 타임스탬프 헤더 허용
-                "webhook-id" // PortOne 고유 ID 헤더 허용
+                "webhook-id", // PortOne 고유 ID 헤더 허용
+                "Accept",
+                "Cache-Control"
         ));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
