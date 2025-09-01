@@ -11,15 +11,11 @@ data:
         web:
           exposure:
             include: prometheus, health, info
-      endpoint:
-        health:
-          access: ALWAYS  # enabled: true 대신
-        prometheus:
-          access: ALWAYS  # enabled: true 대신
+      # endpoint.*.access 설정 제거
       prometheus:
         metrics:
           export:
-            enabled: true  # 경로가 변경됨
+            enabled: true
     spring:
       cloud:
         gateway:
