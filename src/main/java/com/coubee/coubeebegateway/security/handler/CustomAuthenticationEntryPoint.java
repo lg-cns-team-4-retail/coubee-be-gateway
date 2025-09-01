@@ -2,6 +2,7 @@ package com.coubee.coubeebegateway.security.handler;
 
 import com.coubee.coubeebegateway.common.dto.ApiResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
             HttpServletResponse response,
             AuthenticationException authException
     ) throws IOException {
+        log.info((String) request.getAttribute(RequestDispatcher.FORWARD_REQUEST_URI));
         log.info(request.getRequestURI());
         log.info("이유: {}",authException.getMessage());
         ApiResponseDto<String> error = ApiResponseDto.createError(
