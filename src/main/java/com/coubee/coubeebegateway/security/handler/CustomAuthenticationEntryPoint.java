@@ -23,6 +23,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
             HttpServletResponse response,
             AuthenticationException authException
     ) throws IOException {
+        log.info(request.getRequestURI());
         log.info("이유: {}",authException.getMessage());
         ApiResponseDto<String> error = ApiResponseDto.createError(
                 "UNAUTHORIZED", "인증이 필요합니다.");
