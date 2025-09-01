@@ -24,8 +24,16 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
             HttpServletResponse response,
             AuthenticationException authException
     ) throws IOException {
-        log.info((String) request.getAttribute(RequestDispatcher.FORWARD_REQUEST_URI));
-        log.info(request.getRequestURI());
+        String originalUri = (String) request.getAttribute(RequestDispatcher.FORWARD_REQUEST_URI);
+        String currentUri = request.getRequestURI();
+
+        log.info("=== 인증 실패 ===");
+        log.info("현재 URI: {}", currentUri);
+        log.info("원래 URI: {}", originalUri);
+        log.info("요청 메서드: {}", request.getMethod());
+        log.info("User-Agent: {}", request.getHeader("User-Agent"));
+        log.info("실패 이유: {}", authException.getMessage());
+        log.info("예외 타입: {}", authException.getClass().getSimpleName());
         log.info("이유: {}",authException.getMessage());
         ApiResponseDto<String> error = ApiResponseDto.createError(
                 "UNAUTHORIZED", "인증이 필요합니다.");
