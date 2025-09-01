@@ -7,18 +7,19 @@ data:
     server:
       port: 8080
     management:
-      server:
-        port: 8080
-        endpoints:
-          web:
-            base-path: /actuator
-            exposure:
-              include: health,info,prometheus
-        endpoint:
-          health:
-            show-details: never
+      endpoints:
+        web:
+          exposure:
+            include: prometheus, health, info  # prometheus 엔드포인트 노출 (필수)
+      endpoint:
+        prometheus:
+          enabled: true  # prometheus 엔드포인트 활성화 (필수)
+        health:
+          enabled: true
+      metrics:
+        export:
           prometheus:
-            enabled: true
+            enabled: true  # prometheus 메트릭 export 활성화 (필수)
     spring:
       cloud:
         gateway:
