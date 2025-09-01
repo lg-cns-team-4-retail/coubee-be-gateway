@@ -51,6 +51,7 @@ public class WebSecurityConfig {
                 )
                 .authorizeHttpRequests(registry -> registry
                         .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers("/actuator/health", "/actuator/info", "/actuator/prometheus").permitAll()
                         .requestMatchers("/backend/**").permitAll()
                         .requestMatchers("/api/order/webhook/portone").permitAll()
                         .requestMatchers("/api/user/notification/token/delete").permitAll()
