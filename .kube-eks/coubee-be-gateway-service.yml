@@ -16,7 +16,7 @@ metadata:
     
     ## 프로메테우스 설정 추가
     prometheus.io/scrape: "true"
-    prometheus.io/port: "8080"
+    prometheus.io/port: "443"
     prometheus.io/path: "/actuator/prometheus"
 
 spec:
