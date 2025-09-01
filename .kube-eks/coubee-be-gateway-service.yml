@@ -13,6 +13,11 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
 
     external-dns.alpha.kubernetes.io/hostname: api.coubee.store
+    
+    ## 프로메테우스 설정 추가
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8080"
+    prometheus.io/path: "/actuator/prometheus"
 
 spec:
   type: LoadBalancer
