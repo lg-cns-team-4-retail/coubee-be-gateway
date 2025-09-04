@@ -62,7 +62,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/store/images/**").permitAll()
                         .requestMatchers("/api/store/near/**").permitAll()
                         .requestMatchers("/api/store/detail/**").permitAll()
-                        .requestMatchers("/api/product/search/es").permitAll()
+                        .requestMatchers("/api/product/search/**").permitAll()
                         .requestMatchers("/api/product/detail/**").permitAll()
                         .requestMatchers("/api/product/list").permitAll()
                         .requestMatchers("/api/product/view/**").permitAll()
@@ -71,7 +71,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/product/su/**").hasRole("SUPER_ADMIN")
                         .requestMatchers("/api/order/reports/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/order/products/bestsellers-nearby").permitAll()
-                        .requestMatchers("/api/notification/subscribe").permitAll()
+                        .requestMatchers("/api/notification/subscribe").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 );
         return http.build();
