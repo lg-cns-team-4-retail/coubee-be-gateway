@@ -12,6 +12,10 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:ap-northeast-2:310095858382:certificate/e42e1acf-0539-4336-95c5-028098ab62be
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
 
+    service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-2016-08"
+
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health"
+
     external-dns.alpha.kubernetes.io/hostname: api.coubee.store
     
     ## 프로메테우스 설정 추가
