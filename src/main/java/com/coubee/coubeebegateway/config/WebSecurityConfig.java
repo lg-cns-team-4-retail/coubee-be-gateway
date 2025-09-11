@@ -54,6 +54,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/backend/**").permitAll()
                         .requestMatchers("/api/order/webhook/portone").permitAll()
+                        .requestMatchers("/api/order/webhook/portone/**").permitAll()
                         .requestMatchers("/api/user/notification/token/delete").permitAll()
                         .requestMatchers("/api/user/auth/**").permitAll()
                         .requestMatchers("/api/user/images/**").permitAll()
@@ -87,17 +88,17 @@ public class WebSecurityConfig {
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE","PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("*"));
-
-        config.setAllowedHeaders(List.of(
-                "Authorization",
-                "Content-Type",
-                "X-Auth-Token",
-                "webhook-signature", // PortOne 서명 헤더 허용
-                "webhook-timestamp", // PortOne 타임스탬프 헤더 허용
-                "webhook-id", // PortOne 고유 ID 헤더 허용
-                "Accept",
-                "Cache-Control"
-        ));
+//
+//        config.setAllowedHeaders(List.of(
+//                "Authorization",
+//                "Content-Type",
+//                "X-Auth-Token",
+//                "webhook-signature", // PortOne 서명 헤더 허용
+//                "webhook-timestamp", // PortOne 타임스탬프 헤더 허용
+//                "webhook-id", // PortOne 고유 ID 헤더 허용
+//                "Accept",
+//                "Cache-Control"
+//        ));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
