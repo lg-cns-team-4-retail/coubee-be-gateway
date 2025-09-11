@@ -33,6 +33,13 @@ public class AuthenticationHeaderFilterFunction {
             String device = "WEB";
             requestBuilder.header("X-Client-Device", device);
 
+            ServerRequest.Headers originalHeaders = request.headers();
+
+            String storeId = originalHeaders.firstHeader("X-Store-Id");
+            if (storeId != null && !storeId.isEmpty()) {
+                requestBuilder.header("X-Store-Id", storeId);
+            }
+
             return requestBuilder.build();
         };
     }
